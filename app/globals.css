@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #c5c0ff;
+  --color-primary-container: #6d5dfc;
+  --color-secondary: #41eec2;
+  --color-secondary-container: #00d1a7;
+  --color-tertiary: #6bd5ec;
+  --color-tertiary-container: #008296;
+  --color-surface: #111319;
+  --color-surface-dim: #111319;
+  --color-surface-bright: #373940;
+  --color-surface-container: #1d1f26;
+  --color-surface-container-low: #191b22;
+  --color-surface-container-high: #282a30;
+  --color-surface-container-highest: #33343b;
+  --color-surface-container-lowest: #0c0e14;
+  --color-on-surface: #e2e2ea;
+  --color-on-surface-variant: #c8c4d8;
+  --color-outline: #928ea1;
+  --color-outline-variant: #474555;
+  --color-error: #ffb4ab;
+  --color-error-container: #93000a;
+  
+  --spacing-base: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 40px;
+  --spacing-xl: 64px;
+  --spacing-gutter: 24px;
+  --spacing-container-max: 1280px;
+}
+
+/* Custom font styles matching Stitch specifications */
+@utility font-display-lg {
+  font-family: var(--font-inter), sans-serif;
+}
+@utility text-display-lg {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+@utility font-display-lg-mobile {
+  font-family: var(--font-inter), sans-serif;
+}
+@utility text-display-lg-mobile {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+@utility font-headline-md {
+  font-family: var(--font-inter), sans-serif;
+}
+@utility text-headline-md {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+@utility font-body-lg {
+  font-family: var(--font-inter), sans-serif;
+}
+@utility text-body-lg {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0em;
+}
+@utility font-body-md {
+  font-family: var(--font-inter), sans-serif;
+}
+@utility text-body-md {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0em;
+}
+@utility font-label-sm {
+  font-family: var(--font-geist-sans), sans-serif;
+}
+@utility text-label-sm {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+}
+
+body {
+  background-color: #0A0B0F;
+  color: #e2e2ea;
+}
+
+.glass-panel {
+  background: rgba(18, 20, 26, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-card {
+  background-color: rgba(18, 20, 26, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 0.75rem;
+}
+
+.glass-input {
+  background: #0A0B0F;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+  border-color: #6D5DFC;
+  box-shadow: 0 0 0 4px rgba(109, 93, 252, 0.15);
+  outline: none;
+}
+
+.btn-primary {
+  background-color: #6D5DFC;
+  color: white;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(109, 93, 252, 0.15);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 30px rgba(109, 93, 252, 0.3);
+  transform: translateY(-1px);
+}
+
+.chip {
+  background: #1A1B23;
+  color: #c8c4d8;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+}
+
+.chip:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #e2e2ea;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #ffffff, #c5c0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.neon-border-hover:hover {
+  border-image: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(109, 93, 252, 0.4)) 1;
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(109, 93, 252, 0.5);
+}
+
+.box-glow {
+  box-shadow: 0 0 15px rgba(109, 93, 252, 0.15);
+}
+
