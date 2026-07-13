@@ -129,13 +129,20 @@ Based on these results and your knowledge, generate a JSON object matching this 
       }
     });
 
-    const text = response.text;
-    if (!text) throw new Error("Empty response from Gemini");
-    
-    const result = JSON.parse(text) as ValidationResult;
-    return result;
-  } catch (error: any) {
-    console.error('Error generating final report:', error);
-    throw new Error(`Failed to generate final report: ${error?.message || error}`);
-  }
+ const text = response.text;
+if (!text) throw new Error("Empty response from Gemini");
+
+const cleaned = text
+  .replace(/```json/g, "")
+  .replace(/```/g, "")
+  .trim();
+
+try {
+  const result = JSON.parse(cleaned) as ValidationResult;
+  return result;
+} catch (e) {
+  console.error("Gemini returned invalid JSON:");
+  console.error(cleaned);
+  throw e;
+}
 }
