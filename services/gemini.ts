@@ -120,29 +120,33 @@ Based on these results and your knowledge, generate a JSON object matching this 
 }
 `;
 
+ try {
+  const response = await ai.models.generateContent({
+    model: 'gemini-2.5-flash',
+    contents: prompt,
+    config: {
+      responseMimeType: "application/json",
+    }
+  });
+
+  const text = response.text;
+  if (!text) throw new Error("Empty response from Gemini");
+
+  const cleaned = text
+    .replace(/```json/g, "")
+    .replace(/```/g, "")
+    .trim();
+
   try {
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash', // Fallback to flash due to free-tier Pro limits
-      contents: prompt,
-      config: {
-        responseMimeType: "application/json",
-      }
-    });
+    const result = JSON.parse(cleaned) as ValidationResult;
+    return result;
+  } catch (e) {
+    console.error("Gemini returned invalid JSON:");
+    console.error(cleaned);
+    throw e;
+  }
 
- const text = response.text;
-if (!text) throw new Error("Empty response from Gemini");
-
-const cleaned = text
-  .replace(/```json/g, "")
-  .replace(/```/g, "")
-  .trim();
-
-try {
-  const result = JSON.parse(cleaned) as ValidationResult;
-  return result;
-} catch (e) {
-  console.error("Gemini returned invalid JSON:");
-  console.error(cleaned);
-  throw e;
+} catch (error: any) {
+  console.error('Error generating final report:', error);
+  throw new Error(`Failed to generate final report: ${error?.message || error}`);
 }
-
