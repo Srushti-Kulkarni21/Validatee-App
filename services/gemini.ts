@@ -147,6 +147,7 @@ Based on these results and your knowledge, generate a JSON object matching this 
   }
 
 } catch (error: any) {
-  console.error('Error generating final report:', error);
+  console.error('Error generating final report:', error); 
   throw new Error(`Failed to generate final report: ${error?.message || error}`);
+}
 }
