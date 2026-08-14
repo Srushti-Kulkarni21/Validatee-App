@@ -245,18 +245,10 @@ export default function Home() {
         <div className="flex flex-1 min-h-screen relative">
           
           {/* Sidebar Navigation */}
-         <nav className={`
-  fixed inset-y-0 left-0 flex flex-col
-  h-[100dvh] w-[min(80vw,240px)]
-  md:w-60
-  py-md px-sm
-  bg-surface/80 dark:bg-surface/80
-  backdrop-blur-xl
-  border-r border-white/5
-  shadow-[0_0_20px_rgba(109,93,252,0.1)]
-  transition-transform duration-300 ease-in-out
-  z-50
-  ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
+ <nav className={`
+  fixed md:flex flex-col h-screen py-md px-sm ...
+  w-60 fixed left-0 top-0 ...
+  ${mobileMenuOpen ? "flex left-0" : "-left-60 md:left-0"}
 `}>
             <div className="mb-xl flex flex-col gap-xs">
               <h1 className="font-display-lg text-display-lg text-primary text-[28px] font-bold tracking-tighter">ValidateAI</h1>
@@ -355,8 +347,7 @@ export default function Home() {
           )}
 
           {/* Top App Bar */}
-         <header className="fixed top-0 left-0 right-0 md:left-60 h-16 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/5 flex items-center justify-between px-gutter w-full z-[60]">
-            <div className="flex items-center gap-sm md:hidden">
+<header className="fixed top-0 right-0 left-0 md:left-60 h-16 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/5 flex items-center justify-between px-gutter w-full z-40">            <div className="flex items-center gap-sm md:hidden">
               <button 
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="text-on-surface cursor-pointer p-1"
@@ -397,7 +388,7 @@ export default function Home() {
           {/* Main Dashboard Panel */}
 <main className="flex-1 min-w-0 md:ml-60 pt-20 md:pt-[88px] px-4 sm:px-gutter pb-xl w-full max-w-container-max mx-auto z-10 relative">            
             {/* Dashboard Subheader */}
-            <div className="mb-lg flex flex-col lg:flex-row lg:items-end justify-between gap-md">
+            <div className="mb-lg flex flex-col sm:flex-row sm:items-end justify-between gap-sm">
               <div>
                <h2 className="font-headline-md text-headline-md text-on-surface mb-xs flex flex-wrap items-center gap-2 break-words">
   Analysis Results:
