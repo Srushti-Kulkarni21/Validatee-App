@@ -245,10 +245,19 @@ export default function Home() {
         <div className="flex flex-1 min-h-screen relative">
           
           {/* Sidebar Navigation */}
-          <nav className={`
-            fixed md:flex flex-col h-screen py-md px-sm bg-surface/80 dark:bg-surface/80 backdrop-blur-xl w-60 fixed left-0 top-0 border-r border-white/5 shadow-[0_0_20px_rgba(109,93,252,0.1)] transition-all duration-300 ease-in-out z-50
-            ${mobileMenuOpen ? "flex left-0" : "-left-60 md:left-0"}
-          `}>
+         <nav className={`
+  fixed inset-y-0 left-0 flex flex-col
+  h-[100dvh] w-[min(80vw,240px)]
+  md:w-60
+  py-md px-sm
+  bg-surface/80 dark:bg-surface/80
+  backdrop-blur-xl
+  border-r border-white/5
+  shadow-[0_0_20px_rgba(109,93,252,0.1)]
+  transition-transform duration-300 ease-in-out
+  z-50
+  ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
+`}>
             <div className="mb-xl flex flex-col gap-xs">
               <h1 className="font-display-lg text-display-lg text-primary text-[28px] font-bold tracking-tighter">ValidateAI</h1>
               <span className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest text-[10px]">AI Core Active</span>
@@ -346,7 +355,7 @@ export default function Home() {
           )}
 
           {/* Top App Bar */}
-          <header className="fixed top-0 right-0 left-0 md:left-60 h-16 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/5 flex items-center justify-between px-gutter w-full z-40">
+         <header className="fixed top-0 left-0 right-0 md:left-60 h-16 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/5 flex items-center justify-between px-gutter w-full z-[60]">
             <div className="flex items-center gap-sm md:hidden">
               <button 
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -386,14 +395,16 @@ export default function Home() {
           </header>
 
           {/* Main Dashboard Panel */}
-          <main className="flex-1 md:ml-60 pt-[88px] px-gutter pb-xl max-w-container-max mx-auto w-full z-10 relative">
-            
+<main className="flex-1 min-w-0 md:ml-60 pt-20 md:pt-[88px] px-4 sm:px-gutter pb-xl w-full max-w-container-max mx-auto z-10 relative">            
             {/* Dashboard Subheader */}
-            <div className="mb-lg flex flex-col sm:flex-row sm:items-end justify-between gap-sm">
+            <div className="mb-lg flex flex-col lg:flex-row lg:items-end justify-between gap-md">
               <div>
-                <h2 className="font-headline-md text-headline-md text-on-surface mb-xs flex items-center gap-2">
-                  Analysis Results: <span className="text-white font-bold">"{result.idea}"</span>
-                </h2>
+               <h2 className="font-headline-md text-headline-md text-on-surface mb-xs flex flex-wrap items-center gap-2 break-words">
+  Analysis Results:
+  <span className="text-white font-bold break-words">
+    "{result.idea}"
+  </span>
+</h2>
                 <p className="font-body-md text-body-md text-on-surface-variant">Validated against 1.2M market database data points.</p>
               </div>
               <div className="flex gap-xs">
